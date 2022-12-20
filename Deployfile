@@ -23,8 +23,10 @@ pollSCM('H/4 * * * *')
      stage('Ansible deployment'){
        steps{
          script{
-	   sh "cd /etc/ansible"
-           sh "ansible-playbook javaappdeploy.yml -i /etc/ansible/inventory.txt --user jenkins --key-file ~/.ssh/id_rsa"
+	    sh '''#! /bin/bash
+	    cd /etc/ansible
+            ansible-playbook javaappdeploy.yml -i /etc/ansible/inventory.txt --key-file ~/.ssh/id_rsa
+	    '''
          }
        }
          
