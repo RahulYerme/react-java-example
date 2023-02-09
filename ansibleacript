@@ -1,0 +1,9 @@
+#Adding a File to check Build Triggers.
+ - hosts: all
+   become: true
+   become_user: root
+   tasks:
+   - name: Deploy to tomcat
+     copy:
+       src: /var/lib/jenkins/workspace/Java_app_pipeline/target/users-1.0.1-SNAPSHOT.war
+       dest: /opt/tomcat/webapps
